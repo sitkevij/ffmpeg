@@ -4,8 +4,7 @@ language: bash
 services: docker
 
 env:
- - VERSION=2.8
- - IMAGE=ffmpeg
+ - VERSION=2.8 IMAGE=ffmpeg
 
 before_script:
   - env | sort
