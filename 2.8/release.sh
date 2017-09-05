@@ -1,6 +1,7 @@
 set -ex
 # docker hub username
-USERNAME=sitkevij
+USERNAME=$1
+echo $USERNAME
 # image name
 IMAGE=ffmpeg
 # ensure we're up to date
