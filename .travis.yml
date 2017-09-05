@@ -8,16 +8,12 @@ env:
 
 jobs:
   include:
-    - stage: build image
+    - stage: build, test and deploy image
       script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - docker build -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE:$VERSION $VERSION
       - docker images
-    - stage: test image
-      script: 
       - docker run $DOCKER_USERNAME/$IMAGE
-    - stage: deploy image
-      script:
       - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE:$VERSION
       - docker push $DOCKER_USERNAME/$IMAGE:latest
       - docker push $DOCKER_USERNAME/$IMAGE:$VERSION
