@@ -1,0 +1,19 @@
+sudo: required
+
+language: bash
+services: docker
+
+env:
+ - VERSION=2.8 IMAGE=ffmpeg
+
+before_script:
+  - env | sort
+
+script:
+  - docker build -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE:$VERSION $VERSION
+
+after_script:
+  - docker images
+  - docker run $DOCKER_USERNAME/$IMAGE
+# travis lint .travis.yml
+
