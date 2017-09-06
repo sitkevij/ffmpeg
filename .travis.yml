@@ -4,9 +4,9 @@ services: docker
 
 env:
   global:
-    - VERSION=2.8 IMAGE=ffmpeg
     - VERSION=3.3-vmaf IMAGE=ffmpeg
-
+    - VERSION=2.8 IMAGE=ffmpeg
+    
 jobs:
   include:
     - stage: build, test and deploy image
