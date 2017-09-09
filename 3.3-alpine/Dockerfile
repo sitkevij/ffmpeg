@@ -5,7 +5,9 @@
 #
 FROM alpine:3.5
 
-ENTRYPOINT ["/usr/bin/ffmpeg"]
+CMD         ["--help"]
+ENTRYPOINT  ["/usr/bin/ffmpeg"]
+WORKDIR     /tmp/ffmpeg-workdir
 
 ENV FFMPEG_VERSION=3.3.3 \
     BIN=/usr/bin
