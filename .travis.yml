@@ -4,8 +4,9 @@ services: docker
 
 env:
   global:
-    - VERSION=3.3-vmaf IMAGE=ffmpeg
-    - VERSION=2.8 IMAGE=ffmpeg
+    - VERSION=2.8-ubuntu IMAGE=ffmpeg
+    - VERSION=3.3-ubuntu-vmaf IMAGE=ffmpeg
+    - VERSION=3.3-alpine IMAGE=ffmpeg
     
 jobs:
   include:

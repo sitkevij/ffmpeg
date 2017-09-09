@@ -1,7 +1,9 @@
-# ffmpeg - http://ffmpeg.org/
+#
+# ffmpeg - http://ffmpeg.org
 # Read Ubuntu https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu
 # hub https://hub.docker.com/r/sitkevij/ffmpeg/
 # docker run --entrypoint "apt-cache" ffmpeg3 rdepends libass-dev
+#
 FROM        ubuntu:16.04
 MAINTAINER  Julian Sitkevich <sitkevij@gmail.com>>
 
