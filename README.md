@@ -1,24 +1,44 @@
-This repo contains the following ffmpeg images:
-- ffmpeg 2.8 - default image with nearly all build options enabled, pull command:
-  - docker pull sitkevij/ffmpeg
-- ffmpeg 3.3-vmaf - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
-  - docker pull sitkevij/ffmpeg:3.3-vmaf
+## ffmpeg Docker
 
-Read more about ffmpeg at http://ffmpeg.org
+There are two ways to run ffmpeg Docker images:
 
-[![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) ![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic) ![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic) 
+# 1. Pull from Docker Hub
 
-# Running latest
+- [ffmpeg 3.3-alpine/latest](https://github.com/sitkevij/ffmpeg/tree/master/3.3-alpine)
+  - `docker pull sitkevij/ffmpeg` OR `docker pull sitkevij/ffmpeg:3.3-alpine`
+- [ffmpeg 2.8-ubuntu](https://github.com/sitkevij/ffmpeg/tree/master/2.8-ubuntu) - default image with nearly all build options enabled, pull command:
+  - `docker pull sitkevij/ffmpeg:2.8-ubuntu`
+- [ffmpeg 3.3-ubuntu-vmaf](https://github.com/sitkevij/ffmpeg/tree/master/3.3-ubuntu-vmaf) - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
+  - `docker pull sitkevij/ffmpeg:3.3-vmaf`
+
+# 2. Building from source
+```
+$ git clone https://github.com/sitkevij/ffmpeg.git &&
+cd ffmpeg &&
+chmod a+x build-local.sh &&
+./build-local.sh sitkevij 3.3-alpine &&
+docker run --rm sitkevij/ffmpeg:3.3-alpine
+
+```
+
 The default container entry point is `ffmpeg`. 
 
-First, docker pull, 'latest' tag will pull ffmpeg 2.8:
-`docker pull sitkevij/ffmpeg`
+[![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) [![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
 
-To run ffmpeg from the container execute:
-`docker run sitkevij/ffmpeg <ffmpeg-parameters>`
+# About FFmpeg
 
-Print ffmpeg help:
-`docker run sitkevij/ffmpeg --help`
+- FFmpeg http://ffmpeg.org
+
+# About libs
+
+- libass https://github.com/libass/libass
+- libmp3lame http://lame.sourceforge.net
+- libopenjpeg http://www.openjpeg.org
+- libopus http://opus-codec.org/downloads/
+- libvorbis https://xiph.org/vorbis/
+- libvpx http://www.linuxfromscratch.org/blfs/view/svn/multimedia/libvpx.html
+- x264 https://www.videolan.org/developers/x264.html H.264/AVC encoder
+- x265 https://bitbucket.org/multicoreware/x265/wiki/Home x265 HEVC Encoder
 
 # ffmpeg-2.8
 
@@ -137,9 +157,4 @@ ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
     --enable-version3
 ```
 
-# About
 
-- FFmpeg http://ffmpeg.org
-- x264 https://www.videolan.org/developers/x264.html H.264/AVC encoder
-- x265 https://bitbucket.org/multicoreware/x265/wiki/Home x265 HEVC Encoder
-- libvpx http://www.linuxfromscratch.org/blfs/view/svn/multimedia/libvpx.html

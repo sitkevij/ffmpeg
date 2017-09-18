@@ -79,22 +79,22 @@ RUN DIR=$(mktemp -d) && cd ${DIR} && \
   ./configure --prefix="$SRC" && \ 
   make && \
   make install && \
-  make distclean && \
+  # make distclean && \
   rm -rf ${DIR}
 
 # fontconfig
-RUN DIR=$(mktemp -d) && cd ${DIR} && \
-  $GET https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.4.tar.bz2 &&  \
-  tar xvf fontconfig-2.12.4.tar.bz2 &&  \
-  cd fontconfig* && \
-  rm -f src/fcobjshash.h && \
-  ./configure --prefix="$SRC" --sysconfdir=/etc --localstatedir=/var \
-            --disable-docs       \
-            --docdir=/usr/share/doc/fontconfig-2.12.4 && \
-  make && \
-  make install && \
-  make distclean && \
-  rm -rf ${DIR}
+#RUN DIR=$(mktemp -d) && cd ${DIR} && \
+#  $GET https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.4.tar.bz2 &&  \
+#  tar xvf fontconfig-2.12.4.tar.bz2 &&  \
+#  cd fontconfig* && \
+#  rm -f src/fcobjshash.h && \
+#  ./configure --prefix="$SRC" --sysconfdir=/etc --localstatedir=/var \
+#            --disable-docs       \
+#            --docdir=/usr/share/doc/fontconfig-2.12.4 && \
+#  make && \
+#  make install && \
+#  make distclean && \
+#  rm -rf ${DIR}
 
 # libass http://www.linuxfromscratch.org/blfs/view/svn/multimedia/libass.html
 # https://github.com/libass/libass/releases/download/0.13.7/libass-0.13.7.tar.xz
@@ -102,8 +102,10 @@ RUN DIR=$(mktemp -d) && cd ${DIR} && \
   $GET https://github.com/libass/libass/releases/download/0.13.7/libass-$LIBASS_VERSION.tar.gz && \
   tar xzvf libass-$LIBASS_VERSION.tar.gz && \
   cd libass* && \
-  ./configure --prefix="$SRC" && \
-  ./make-install-rm.sh
+  ./configure --prefix="$SRC" --disable-require-system-font-provider && \
+  make && \
+  make install && \
+  rm -rf ${DIR}
 
 # fdk-aac
 RUN DIR=$(mktemp -d) && cd ${DIR} && \
