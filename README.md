@@ -28,6 +28,8 @@ The ffmpeg image includes `ffprobe`, which can be run as:
 $ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg:3.3-alpine "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
 ```
 
+[![](https://images.microbadger.com/badges/image/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "image metadata") [![](https://images.microbadger.com/badges/version/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "app version")
+
 [![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) [![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
 
 # About FFmpeg
