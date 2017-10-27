@@ -6,7 +6,7 @@ echo $1
 echo $2
 # image name
 IMAGE=ffmpeg
-docker build -t $USERNAME/$IMAGE:latest -t $USERNAME/$IMAGE:$VERSION $VERSION
+docker build --no-cache -t $USERNAME/$IMAGE:latest -t $USERNAME/$IMAGE:$VERSION $VERSION
 echo "# ffmpeg $VERSION" >$VERSION/README.md
 echo "\`\`\`" >>$VERSION/README.md
 docker run --rm $USERNAME/$IMAGE -version >>$VERSION/README.md

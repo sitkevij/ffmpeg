@@ -7,6 +7,8 @@
 # docker run sitkevij/ffmpeg -ss 00:00:02 -i 'https://github.com/sitkevij/test-media/blob/master/media/tears_of_steel_1080p-s05m-d10s.mov' -c:v copy -c:a copy out.mov
 # https://raw.githubusercontent.com/sitkevij/test-media/master/media/tears_of_steel_1080p-s05m-d10s.mov 
 #
+# pipe in: cat media/tears_of_steel_1080p-s05m-d10s.mov  |  docker run sitkevij/ffmpeg -f mov -i pipe: -f webm -c:v libvpx -c:a libvorbis - > test3.webm
+
 FROM alpine:3.5
 
 CMD         ["--help"] 
@@ -20,6 +22,7 @@ RUN apk update && apk upgrade && \
     apk add --update ca-certificates && \
 
     apk add \
+        #  alpine-sdk \
         freetype-dev \
         gnutls-dev \ 
         lame-dev \ 
@@ -29,6 +32,8 @@ RUN apk update && apk upgrade && \
         libvorbis-dev \
         libvpx-dev \
         libwebp-dev \
+        libssh2 \
+        #  openssl \
         opus-dev \
         rtmpdump-dev \
         x264-dev \

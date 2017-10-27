@@ -13,15 +13,20 @@ There are two ways to run ffmpeg Docker images:
 
 # 2. Building from source
 ```
-$ git clone https://github.com/sitkevij/ffmpeg.git &&
-cd ffmpeg &&
-chmod a+x build-local.sh &&
-./build-local.sh sitkevij 3.3-alpine &&
+$ git clone https://github.com/sitkevij/ffmpeg.git && \
+cd ffmpeg && \
+chmod a+x build-local.sh && \
+./build-local.sh sitkevij 3.3-alpine && \
 docker run --rm sitkevij/ffmpeg:3.3-alpine
-
 ```
 
 The default container entry point is `ffmpeg`. 
+
+# Running ffprobe
+The ffmpeg image includes `ffprobe`, which can be run as:
+```
+$ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg:3.3-alpine "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
+```
 
 [![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) [![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
 
