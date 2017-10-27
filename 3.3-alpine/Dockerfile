@@ -7,12 +7,19 @@
 # docker run sitkevij/ffmpeg -ss 00:00:02 -i 'https://github.com/sitkevij/test-media/blob/master/media/tears_of_steel_1080p-s05m-d10s.mov' -c:v copy -c:a copy out.mov
 # https://raw.githubusercontent.com/sitkevij/test-media/master/media/tears_of_steel_1080p-s05m-d10s.mov 
 #
-# pipe in: cat media/tears_of_steel_1080p-s05m-d10s.mov  |  docker run sitkevij/ffmpeg -f mov -i pipe: -f webm -c:v libvpx -c:a libvorbis - > test3.webm
 
 FROM alpine:3.5
 
 CMD         ["--help"] 
 ENTRYPOINT  ["ffmpeg"]
+
+LABEL org.label-schema.build-date=${BUILD_DATE} \
+      org.label-schema.name="ffmpeg" \
+      org.label-schema.description="ffmpeg Docker" \
+      org.label-schema.url="https://hub.docker.com/r/sitkevij/ffmpeg/" \
+      org.label-schema.vcs-url="https://github.com/sitkevij/vmaf" \
+      org.label-schema.vendor="sitkevij" \
+      org.label-schema.version="3.3.3"
 
 ENV FFMPEG_VERSION=3.3.3 \
     BIN=/usr/bin
