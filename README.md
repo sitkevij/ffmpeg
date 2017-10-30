@@ -20,7 +20,7 @@ chmod a+x build-local.sh && \
 docker run --rm sitkevij/ffmpeg:3.3-alpine
 ```
 
-The default container entry point is `ffmpeg`. 
+The default container entry point is `ffmpeg`.
 
 # Running ffprobe
 The ffmpeg image includes `ffprobe`, which can be run as:
@@ -163,5 +163,3 @@ ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
     --enable-small
     --enable-version3
 ```
-
-

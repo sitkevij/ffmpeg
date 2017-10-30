@@ -5,21 +5,23 @@
 #
 # docker run --entrypoint "/bin/ls" sitkevij/ffmpeg -al /bin
 # docker run sitkevij/ffmpeg -ss 00:00:02 -i 'https://github.com/sitkevij/test-media/blob/master/media/tears_of_steel_1080p-s05m-d10s.mov' -c:v copy -c:a copy out.mov
-# https://raw.githubusercontent.com/sitkevij/test-media/master/media/tears_of_steel_1080p-s05m-d10s.mov 
+# https://raw.githubusercontent.com/sitkevij/test-media/master/media/tears_of_steel_1080p-s05m-d10s.mov
 #
 
 FROM alpine:3.5
 
-CMD         ["--help"] 
+CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
 
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.name="ffmpeg" \
-      org.label-schema.description="ffmpeg Docker" \
+      org.label-schema.description="Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option" \
       org.label-schema.url="https://hub.docker.com/r/sitkevij/ffmpeg/" \
-      org.label-schema.vcs-url="https://github.com/sitkevij/vmaf" \
+      org.label-schema.usage="https://github.com/sitkevij/ffmpeg/blob/master/README.md" \
+      org.label-schema.vcs-url="https://github.com/sitkevij/ffmpeg" \
       org.label-schema.vendor="sitkevij" \
-      org.label-schema.version="3.3.3"
+      org.label-schema.version="3.3.3" \
+      maintainer="https://github.com/sitkevij"
 
 ENV FFMPEG_VERSION=3.3.3 \
     BIN=/usr/bin
@@ -31,8 +33,8 @@ RUN apk update && apk upgrade && \
     apk add \
         #  alpine-sdk \
         freetype-dev \
-        gnutls-dev \ 
-        lame-dev \ 
+        gnutls-dev \
+        lame-dev \
         libass-dev \
         libogg-dev \
         libtheora-dev \
@@ -45,8 +47,8 @@ RUN apk update && apk upgrade && \
         rtmpdump-dev \
         x264-dev \
         x265-dev \
-        yasm-dev \ 
-        zlib-dev && \ 
+        yasm-dev \
+        zlib-dev && \
 
     apk add --no-cache --virtual \
         .build-dependencies \
@@ -58,7 +60,7 @@ RUN apk update && apk upgrade && \
         tar \
         x264 && \
 
-# ffmepg make, install, rm tmp 
+# ffmepg make, install, rm tmp
 DIR=$(mktemp -d) && cd ${DIR} && \
     wget http://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.gz && \
     tar xzvf ffmpeg-${FFMPEG_VERSION}.tar.gz && \
@@ -94,4 +96,3 @@ DIR=$(mktemp -d) && cd ${DIR} && \
 # clean
     apk del --purge .build-dependencies && \
     rm -rf /var/cache/apk/*
-
