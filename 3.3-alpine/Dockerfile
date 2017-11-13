@@ -12,6 +12,7 @@ FROM alpine:3.5
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
+WORKDIR     /tmp/ffmpeg
 
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.name="ffmpeg" \
