@@ -1,15 +1,19 @@
 FROM alpine:3.6
-CMD  ["--help"]
 
-ENTRYPOINT  ["ffmpeg"]
+ARG BUILD_DATE
+ARG VCS_REF
+CMD ["--help"]
 
-WORKDIR     /tmp/ffmpeg
+ENTRYPOINT ["ffmpeg"]
+
+WORKDIR /tmp/ffmpeg
 
 LABEL org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.name="ffmpeg" \
       org.label-schema.description="Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option" \
       org.label-schema.url="https://hub.docker.com/r/sitkevij/ffmpeg/" \
       org.label-schema.usage="https://github.com/sitkevij/ffmpeg/blob/master/README.md" \
+      org.label-schema.vcs-ref=${VCS_REF} \
       org.label-schema.vcs-url="https://github.com/sitkevij/ffmpeg" \
       org.label-schema.vendor="sitkevij" \
       org.label-schema.version="3.3" \

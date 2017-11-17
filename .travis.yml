@@ -3,21 +3,21 @@ language: bash
 services: docker
 
 env:
- - SOFTWARE=ffmpeg VERSION=3.3.4 OS=alpine
- - SOFTWARE=ffmpeg VERSION=3.3.5 OS=alpine
- - SOFTWARE=ffmpeg VERSION=3.3 OS=alpine
- - SOFTWARE=ffmpeg VERSION=3.4 OS=alpine
+ - IMAGE=ffmpeg VERSION=3.3.4 OS=alpine
+ - IMAGE=ffmpeg VERSION=3.3.5 OS=alpine
+ - IMAGE=ffmpeg VERSION=3.3 OS=alpine
+ - IMAGE=ffmpeg VERSION=3.4 OS=alpine
 
 before_script:
   - env | sort
-  - IMAGE_VERSION="${SOFTWARE}:${VERSION}"
-  - LOCAL_DIR="${SOFTWARE}-${VERSION}-${OS}"
+  - IMAGE_VERSION="${IMAGE}:${VERSION}"
+  - LOCAL_DIR="${IMAGE}-${VERSION}-${OS}"
 
 script:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker build -t $DOCKER_USERNAME/$SOFTWARE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
+- docker build --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
 - docker images
-- docker run $DOCKER_USERNAME/$SOFTWARE
-- docker tag $DOCKER_USERNAME/$SOFTWARE:latest $DOCKER_USERNAME/$IMAGE_VERSION
-- docker push $DOCKER_USERNAME/$SOFTWARE:latest
+- docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf
+- docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
+- docker push $DOCKER_USERNAME/$IMAGE:latest
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
