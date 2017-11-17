@@ -3,19 +3,21 @@ language: bash
 services: docker
 
 env:
-  global:
-    - VERSION=2.8-ubuntu IMAGE=ffmpeg
-    - VERSION=3.3-ubuntu-vmaf IMAGE=ffmpeg
-    - VERSION=3.3-alpine IMAGE=ffmpeg
-    
-jobs:
-  include:
-    - stage: build, test and deploy image
-      script:
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE:$VERSION $VERSION
-      - docker images
-      - docker run $DOCKER_USERNAME/$IMAGE
-      - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE:$VERSION
-      - docker push $DOCKER_USERNAME/$IMAGE:latest
-      - docker push $DOCKER_USERNAME/$IMAGE:$VERSION
+ - SOFTWARE=ffmpeg VERSION=3.3.4 OS=alpine
+ - SOFTWARE=ffmpeg VERSION=3.3.5 OS=alpine
+ - SOFTWARE=ffmpeg VERSION=3.3 OS=alpine
+ - SOFTWARE=ffmpeg VERSION=3.4 OS=alpine
+
+before_script:
+  - env | sort
+  - IMAGE_VERSION="${SOFTWARE}:${VERSION}"
+  - LOCAL_DIR="${SOFTWARE}-${VERSION}-${OS}"
+
+script:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker build -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
+- docker images
+- docker --rm run $DOCKER_USERNAME/$IMAGE
+- docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
+- docker push $DOCKER_USERNAME/$IMAGE:latest
+- docker push $DOCKER_USERNAME/$IMAGE_VERSION
