@@ -15,9 +15,9 @@ before_script:
 
 script:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker build -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
+- docker build -t $DOCKER_USERNAME/$SOFTWARE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
 - docker images
-- docker --rm run $DOCKER_USERNAME/$IMAGE
-- docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
-- docker push $DOCKER_USERNAME/$IMAGE:latest
+- docker --rm run $DOCKER_USERNAME/$SOFTWARE
+- docker tag $DOCKER_USERNAME/$SOFTWARE:latest $DOCKER_USERNAME/$IMAGE_VERSION
+- docker push $DOCKER_USERNAME/$SOFTWARE:latest
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
