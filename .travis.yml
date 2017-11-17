@@ -10,7 +10,7 @@ env:
 
 before_script:
   - env | sort
-  - IMAGE_VERSION="${IMAGE}:${VERSION}"
+  - IMAGE_VERSION="${IMAGE}:${VERSION}-${OS}"
   - LOCAL_DIR="${IMAGE}-${VERSION}-${OS}"
 
 script:

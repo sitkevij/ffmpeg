@@ -5,7 +5,6 @@
 # docker run --entrypoint "apt-cache" ffmpeg3 rdepends libass-dev
 #
 FROM        ubuntu:16.04
-MAINTAINER  Julian Sitkevich <sitkevij@gmail.com>>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]

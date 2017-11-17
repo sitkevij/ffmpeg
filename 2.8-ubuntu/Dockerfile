@@ -4,7 +4,6 @@
 # hub https://hub.docker.com/r/sitkevij/ffmpeg/
 #
 FROM        ubuntu:16.04
-MAINTAINER  Julian Sitkevich <sitkevij@gmail.com>>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]

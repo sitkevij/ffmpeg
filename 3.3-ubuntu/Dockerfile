@@ -8,7 +8,6 @@ FROM        ubuntu:16.04
 # FROM        debian:stretch
 # see https://hub.docker.com/r/blitznote/debootstrap-amd64/
 # FROM        blitznote/debootstrap-amd64:16.04 
-MAINTAINER  Julian Sitkevich <sitkevij@gmail.com>>
 
 CMD         ["--help"]
 ENTRYPOINT  ["ffmpeg"]
