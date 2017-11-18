@@ -19,7 +19,9 @@ script:
 - docker build --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` -t $DOCKER_USERNAME/$IMAGE:latest -t $DOCKER_USERNAME/$IMAGE_VERSION $LOCAL_DIR
 - docker images
 - docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf
-- if [[ "$VERSION" == "3.4" ]]; docker tag $DOCKER_USERNAME/$IMAGE:latest ; fi
-- docker tag $DOCKER_USERNAME/$IMAGE_VERSION
-- if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
+- docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
+# - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
+- if [ $VERSION == "3.4" ]; then
+    docker push $DOCKER_USERNAME/$IMAGE:latest
+    fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
