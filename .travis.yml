@@ -22,6 +22,6 @@ script:
 - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
 # - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
 - if [ $VERSION == "3.4" ]; then
-    docker push $DOCKER_USERNAME/$IMAGE:latest
+    docker push $DOCKER_USERNAME/$IMAGE:latest;
     fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
