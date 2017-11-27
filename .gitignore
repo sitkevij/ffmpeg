@@ -5,6 +5,12 @@ __pycache__/
 
 .DS_Store
 
+# media
+*.mp4
+*.mov
+*.m3u8
+*.ts
+
 # C extensions
 *.so
 
