@@ -4,11 +4,11 @@ There are two ways to run ffmpeg Docker images:
 
 # 1. Pull from Docker Hub
 
-- [ffmpeg 3.3-alpine/latest](https://github.com/sitkevij/ffmpeg/tree/master/3.3-alpine)
+- [ffmpeg 3.3-alpine/latest](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-alpine)
   - `docker pull sitkevij/ffmpeg` OR `docker pull sitkevij/ffmpeg:3.3-alpine`
-- [ffmpeg 2.8-ubuntu](https://github.com/sitkevij/ffmpeg/tree/master/2.8-ubuntu) - default image with nearly all build options enabled, pull command:
+- [ffmpeg 2.8-ubuntu](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-2.8-ubuntu) - default image with nearly all build options enabled, pull command:
   - `docker pull sitkevij/ffmpeg:2.8-ubuntu`
-- [ffmpeg 3.3-ubuntu-vmaf](https://github.com/sitkevij/ffmpeg/tree/master/3.3-ubuntu-vmaf) - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
+- [ffmpeg 3.3-ubuntu-vmaf](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-ubuntu-vmaf) - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
   - `docker pull sitkevij/ffmpeg:3.3-vmaf`
 
 # 2. Building from source
@@ -16,8 +16,8 @@ There are two ways to run ffmpeg Docker images:
 $ git clone https://github.com/sitkevij/ffmpeg.git && \
 cd ffmpeg && \
 chmod a+x build-local.sh && \
-./build-local.sh sitkevij 3.3-alpine && \
-docker run --rm sitkevij/ffmpeg:3.3-alpine
+./build-local.sh sitkevij ffmpeg-3.4-alpine && \
+docker run --rm sitkevij/ffmpeg:3.4-alpine
 ```
 
 The default container entry point is `ffmpeg`.
@@ -25,7 +25,7 @@ The default container entry point is `ffmpeg`.
 # Running ffprobe
 The ffmpeg image includes `ffprobe`, which can be run as:
 ```
-$ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg:3.3-alpine "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
+$ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
 ```
 
 [![](https://images.microbadger.com/badges/image/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "image metadata") [![](https://images.microbadger.com/badges/version/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "app version")
