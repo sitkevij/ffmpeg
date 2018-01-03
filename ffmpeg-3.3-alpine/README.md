@@ -1,7 +1,24 @@
-# ffmpeg 3.3-alpine
+# ffmpeg 3.3 alpine 3.7
+## Running
 ```
-ffmpeg version 3.3.3 Copyright (c) 2000-2017 the FFmpeg developers
-built with gcc 6.2.1 (Alpine 6.2.1) 20160822
+docker run --rm sitkevij/ffmpeg:3.3-alpine
+```
+## Pulling from Docker Hub
+```
+docker pull sitkevij/ffmpeg:3.3-alpine
+```
+## Building from source
+```
+git clone https://github.com/sitkevij/ffmpeg.git && \
+cd ffmpeg && \
+chmod a+x build-local.sh && \
+./build-local.sh sitkevij ffmpeg-3.3-alpine && \
+docker run --rm sitkevij/ffmpeg:3.3-alpine
+```
+## Buildconf
+```
+ffmpeg version 3.3 Copyright (c) 2000-2017 the FFmpeg developers
+built with gcc 6.4.0 (Alpine 6.4.0)
 configuration: --bindir=/usr/bin --disable-debug --disable-doc --disable-ffplay --enable-avresample --enable-gnutls --enable-gpl --enable-libass --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-librtmp --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-nonfree --enable-postproc --enable-small --enable-version3
 libavutil      55. 58.100 / 55. 58.100
 libavcodec     57. 89.100 / 57. 89.100
@@ -37,3 +54,7 @@ libpostproc    54.  5.100 / 54.  5.100
     --enable-small
     --enable-version3
 ```
+## Git repo
+https://github.com/sitkevij/ffmpeg
+## Docker Hub repo
+https://hub.docker.com/r/sitkevij/ffmpeg/
