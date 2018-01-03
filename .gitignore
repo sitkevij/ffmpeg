@@ -11,6 +11,9 @@ __pycache__/
 *.m3u8
 *.ts
 
+# binary
+mo
+
 # C extensions
 *.so
 

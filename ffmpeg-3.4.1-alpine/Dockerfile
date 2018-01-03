@@ -15,10 +15,10 @@ LABEL org.label-schema.build-date="${BUILD_DATE}" \
       org.label-schema.vcs-ref="${VCS_REF}" \
       org.label-schema.vcs-url="https://github.com/sitkevij/ffmpeg" \
       org.label-schema.vendor="sitkevij" \
-      org.label-schema.version="3.3" \
+      org.label-schema.version="3.4.1" \
       maintainer="https://github.com/sitkevij"
 
-ENV SOFTWARE_VERSION="3.3"
+ENV SOFTWARE_VERSION="3.4.1"
 ENV SOFTWARE_VERSION_URL="http://ffmpeg.org/releases/ffmpeg-${SOFTWARE_VERSION}.tar.bz2"
 ENV BIN="/usr/bin"
 
