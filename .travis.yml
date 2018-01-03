@@ -3,10 +3,10 @@ language: bash
 services: docker
 
 env:
- - IMAGE=ffmpeg VERSION=3.3.4 OS=alpine
  - IMAGE=ffmpeg VERSION=3.3.5 OS=alpine
  - IMAGE=ffmpeg VERSION=3.3 OS=alpine
  - IMAGE=ffmpeg VERSION=3.4 OS=alpine
+ - IMAGE=ffmpeg VERSION=3.4.1 OS=alpine
  - IMAGE=ffmpeg VERSION=snapshot OS=alpine
 
 before_script:
@@ -25,7 +25,7 @@ script:
 - docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf >>"$LOCAL_DIR/README.md"
 - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
 # - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
-- if [ $VERSION == "3.4" ]; then
+- if [ $VERSION == "3.4.1" ]; then
     docker push $DOCKER_USERNAME/$IMAGE:latest;
     fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION

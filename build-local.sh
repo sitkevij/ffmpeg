@@ -6,10 +6,38 @@ VERSION="$2"
 echo "$1"
 echo "$2"
 # image name
-IMAGE=ffmpeg
-docker build --no-cache -t $USERNAME/$IMAGE:latest -t $USERNAME/$IMAGE:$VERSION $VERSION
-echo "# ffmpeg $VERSION" >$VERSION/README.md
-echo "\`\`\`" >>$VERSION/README.md
-docker run --rm $USERNAME/$IMAGE -version >>$VERSION/README.md
-docker run --rm $USERNAME/$IMAGE -buildconf >>$VERSION/README.md
-echo "\`\`\`" >>$VERSION/README.md
+IMAGE="ffmpeg"
+OS="alpine"
+OS_VERSION="3.7"
+LOCAL_DIR="${IMAGE}-${VERSION}-${OS}"
+README="${LOCAL_DIR}/README.md"
+# mkdir "$LOCAL_DIR"
+image="$IMAGE" user="$USERNAME" version="$VERSION" description="Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option" from="${OS}:${OS_VERSION}" mo Dockerfile.mo >"$LOCAL_DIR/Dockerfile"
+# docker build --no-cache -t "$USERNAME/$IMAGE:latest" -t "$USERNAME/$IMAGE:$VERSION-$OS" "$LOCAL_DIR"
+echo "# ${IMAGE} ${VERSION} ${OS} ${OS_VERSION}" >"${README}"
+echo "## Running" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "docker run --rm sitkevij/${IMAGE}:${VERSION}-${OS}" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "## Pulling from Docker Hub" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "docker pull sitkevij/${IMAGE}:${VERSION}-${OS}" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "## Building from source" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "git clone https://github.com/sitkevij/ffmpeg.git && \\" >>"${README}"
+echo "cd ffmpeg && \\" >>"${README}"
+echo "chmod a+x build-local.sh && \\" >>"${README}"
+echo "./build-local.sh sitkevij ${LOCAL_DIR} && \\" >>"${README}"
+echo "docker run --rm sitkevij/${IMAGE}:${VERSION}-${OS}" >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "## Buildconf" >>"${README}"
+echo "\`\`\`" >>"${README}"
+docker run --rm "$USERNAME/$IMAGE:$VERSION-$OS" -version >>"${README}"
+docker run --rm "$USERNAME/$IMAGE:$VERSION-$OS" -buildconf >>"${README}"
+echo "\`\`\`" >>"${README}"
+echo "## Git repo" >>"${README}"
+echo "https://github.com/${USERNAME}/${IMAGE}" >>"${README}"
+echo "## Docker Hub repo" >>"${README}"
+echo "https://hub.docker.com/r/${USERNAME}/${IMAGE}/" >>"${README}"
+# see https://stackoverflow.com/questions/23137336/search-and-replace-with-bash
