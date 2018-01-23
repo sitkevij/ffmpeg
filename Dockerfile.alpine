@@ -77,9 +77,9 @@ PATH="$BIN:$PATH" && \
   --enable-postproc \ 
   --enable-small \ 
   --enable-version3 && \
-make && \
+make -j4 && \
 make install && \
 make distclean && \
 rm -rf "${DIR}"  && \
-apk del --purge   .build-dependencies && \
+apk del --purge .build-dependencies && \
 rm -rf /var/cache/apk/* 
