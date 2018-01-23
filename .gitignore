@@ -10,6 +10,7 @@ __pycache__/
 *.mov
 *.m3u8
 *.ts
+*.srt
 
 # binary
 mo

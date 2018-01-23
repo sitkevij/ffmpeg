@@ -1,24 +1,24 @@
-FROM {{from}}
+FROM arm32v6/alpine:3.7
 
 ARG BUILD_DATE
 ARG VCS_REF
 
 CMD         ["--help"]
-ENTRYPOINT  ["{{image}}"]
-WORKDIR     /tmp/{{image}}
+ENTRYPOINT  ["ffmpeg"]
+WORKDIR     /tmp/ffmpeg
 
 LABEL org.label-schema.build-date="${BUILD_DATE}" \
-      org.label-schema.name="{{image}}" \
-      org.label-schema.description="{{description}}" \
-      org.label-schema.url="https://hub.docker.com/r/{{user}}/{{image}}/" \
-      org.label-schema.usage="https://github.com/{{user}}/{{image}}/blob/master/README.md" \
+      org.label-schema.name="ffmpeg" \
+      org.label-schema.description="Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option" \
+      org.label-schema.url="https://hub.docker.com/r/sitkevij/ffmpeg/" \
+      org.label-schema.usage="https://github.com/sitkevij/ffmpeg/blob/master/README.md" \
       org.label-schema.vcs-ref="${VCS_REF}" \
-      org.label-schema.vcs-url="https://github.com/{{user}}/{{image}}" \
-      org.label-schema.vendor="{{user}}" \
-      org.label-schema.version="{{version}}" \
-      maintainer="https://github.com/{{user}}"
+      org.label-schema.vcs-url="https://github.com/sitkevij/ffmpeg" \
+      org.label-schema.vendor="sitkevij" \
+      org.label-schema.version="3.4.1" \
+      maintainer="https://github.com/sitkevij"
 
-ENV SOFTWARE_VERSION="{{version}}"
+ENV SOFTWARE_VERSION="3.4.1"
 ENV SOFTWARE_VERSION_URL="http://ffmpeg.org/releases/ffmpeg-${SOFTWARE_VERSION}.tar.bz2"
 ENV BIN="/usr/bin"
 
