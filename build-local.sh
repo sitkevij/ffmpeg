@@ -1,19 +1,20 @@
 #!/bin/sh
 set -ex
 # docker hub username
-USERNAME="$1"
-VERSION="$2"
+DOCKERFILE="$1"
+USERNAME="$2"
+VERSION="$3"
 IMAGE="ffmpeg"
-OS="alpine"
+OS="$4"
 OS_SAFE=$(echo $OS | sed -e "s/\//-/g") # in case of base/image such as arm32v6/alpine
 echo $OS
-OS_VERSION="3.7"
+OS_VERSION="$5"
 LOCAL_DIR="${IMAGE}-${VERSION}-${OS_SAFE}"
+if [ ! -d "$LOCAL_DIR" ]; then
+    mkdir $LOCAL_DIR
+fi
 README="${LOCAL_DIR}/README.md"
-./gen-dockerfile.sh Dockerfile.alpine "$USERNAME" "$VERSION" "$OS:$OS_VERSION" >"$LOCAL_DIR/Dockerfile"
-# mkdir "$LOCAL_DIR"
-# cat Dockerfile.alpine | sed "s/{{from}}/$OS:$OS_VERSION/" | sed "s/{{image}}/$IMAGE/" | sed 's/{{user}}/sitkevij/' | sed 's/{{version}}/3.4.1/' | sed 's/{{description}}/Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option/'
-# image="$IMAGE" user="$USERNAME" version="$VERSION" description="Small ffmpeg Docker images for Alpine Linux, Ubuntu with VMAF option" from="${OS}:${OS_VERSION}" mo Dockerfile.alpine >"$LOCAL_DIR/Dockerfile"
+./gen-dockerfile.sh "$DOCKERFILE" "$USERNAME" "$VERSION" "$OS_SAFE:$OS_VERSION" >"$LOCAL_DIR/Dockerfile"
 docker build --no-cache -t "$USERNAME/$IMAGE:latest" -t "$USERNAME/$IMAGE:$VERSION-$OS_SAFE" "$LOCAL_DIR"
 echo "# ${IMAGE} ${VERSION} ${OS} ${OS_VERSION}" >"${README}"
 echo "## Running" >>"${README}"
