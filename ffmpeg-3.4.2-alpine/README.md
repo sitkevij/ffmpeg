@@ -1,4 +1,4 @@
-# ffmpeg 3.4.1 alpine 3.7
+# ffmpeg 3.4.2 alpine 3.7
 ## Running
 ```
 docker run --rm sitkevij/ffmpeg:3.4.2-alpine
