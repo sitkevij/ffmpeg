@@ -31,6 +31,7 @@ $ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg "https://github.com/sit
 [![](https://images.microbadger.com/badges/image/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "image metadata") [![](https://images.microbadger.com/badges/version/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "app version")
 
 [![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) [![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg?ref=badge_shield)
 
 # About FFmpeg
 
@@ -163,3 +164,7 @@ ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
     --enable-small
     --enable-version3
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg?ref=badge_large)
