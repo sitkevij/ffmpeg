@@ -1,7 +1,8 @@
 sudo: required
 language: bash
 services: docker
-
+# import note about external pull requests and travis:
+#   https://docs.travis-ci.com/user/pull-requests/#Pull-Requests-and-Security-Restrictions
 env:
  - IMAGE=ffmpeg VERSION=3.3.5 OS=alpine
  - IMAGE=ffmpeg VERSION=3.3 OS=alpine
