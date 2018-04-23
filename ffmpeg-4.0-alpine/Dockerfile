@@ -56,6 +56,7 @@ wget "${SOFTWARE_VERSION_URL}" && \
 tar xjvf "ffmpeg-${SOFTWARE_VERSION}.tar.bz2" && \
 cd ffmpeg* && \
 PATH="$BIN:$PATH" && \
+./configure --help && \
 ./configure --bindir="$BIN" --disable-debug \
   --disable-doc \ 
   --disable-ffplay \ 
