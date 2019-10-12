@@ -37,6 +37,10 @@ $ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg "https://github.com/sit
 
 - FFmpeg http://ffmpeg.org
 
+# FFmpeg version changelog
+
+Not sure what's in a release? Review the FFmpeg [changelog](https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/Changelog)
+
 # About libs
 
 - libass https://github.com/libass/libass
@@ -165,6 +169,10 @@ ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
     --enable-version3
 ```
 
-
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fsitkevij%2Fffmpeg?ref=badge_large)
+
+# Other useful tools
+
+- [hex - hexdumnp utility](https://github.com/sitkevij/hex)
+- [mpi - MPEG media inspector](https://github.com/sitkevij/mpi)

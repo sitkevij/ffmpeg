@@ -1,9 +1,10 @@
 sudo: required
 language: bash
 services: docker
-
+# import note about external pull requests and travis:
+#   https://docs.travis-ci.com/user/pull-requests/#Pull-Requests-and-Security-Restrictions
 env:
- - IMAGE=ffmpeg VERSION=3.3.5 OS=alpine
+ - IMAGE=ffmpeg VERSION=4.0 OS=alpine
  - IMAGE=ffmpeg VERSION=3.3 OS=alpine
  - IMAGE=ffmpeg VERSION=3.4 OS=alpine
  - IMAGE=ffmpeg VERSION=3.4.2 OS=alpine
@@ -25,7 +26,7 @@ script:
 - docker run $DOCKER_USERNAME/$IMAGE_VERSION -buildconf >>"$LOCAL_DIR/README.md"
 - docker tag $DOCKER_USERNAME/$IMAGE:latest $DOCKER_USERNAME/$IMAGE_VERSION
 # - if [[ "$VERSION" == "3.4" ]]; docker push $DOCKER_USERNAME/$IMAGE:latest ; fi
-- if [ $VERSION == "3.4.2" ]; then
+- if [ $VERSION == "4.0" ]; then
     docker push $DOCKER_USERNAME/$IMAGE:latest;
     fi
 - docker push $DOCKER_USERNAME/$IMAGE_VERSION
