@@ -11,6 +11,11 @@ __pycache__/
 *.m3u8
 *.ts
 *.srt
+*.wav
+*.mkv
+*.webm
+
+*.ignore.*
 
 # binary
 mo

@@ -1,8 +1,15 @@
-## ffmpeg Docker
+# ffmpeg Docker
 
-There are two ways to run ffmpeg Docker images:
+[![](https://images.microbadger.com/badges/image/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "image metadata") [![](https://images.microbadger.com/badges/version/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "app version")
+[![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
+[![GitHub Repo stars](https://img.shields.io/github/stars/sitkevij/ffmpeg)](https://github.com/sitkevij/ffmpeg)
+[![GitHub repo size](https://img.shields.io/github/repo-size/sitkevij/ffmpeg)](https://github.com/sitkevij/ffmpeg)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/sitkevij/ffmpeg)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/sitkevij/ffmpeg/latest)
 
-# 1. Pull from Docker Hub
+## Run
+
+### 1. Pull from Docker Hub
 
 - [ffmpeg 3.3-alpine/latest](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-alpine)
   - `docker pull sitkevij/ffmpeg` OR `docker pull sitkevij/ffmpeg:3.3-alpine`
@@ -11,36 +18,33 @@ There are two ways to run ffmpeg Docker images:
 - [ffmpeg 3.3-ubuntu-vmaf](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-ubuntu-vmaf) - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
   - `docker pull sitkevij/ffmpeg:3.3-vmaf`
 
-# 2. Building from source
-```
-$ git clone https://github.com/sitkevij/ffmpeg.git && \
-cd ffmpeg && \
-chmod a+x build-local.sh && \
-./build-local.sh sitkevij ffmpeg-3.4-alpine && \
-docker run --rm sitkevij/ffmpeg:3.4-alpine
+### 2. Building from source
+
+```sh
+git clone https://github.com/sitkevij/ffmpeg.git && \
+cd ffmpeg/ffmpeg-6/ffmpeg-6.1-alpine-3.18 && \
+docker build --no-cache -t "sitkevij/ffmpeg:6.1-alpine-3.18" .
 ```
 
 The default container entry point is `ffmpeg`.
 
-# Running ffprobe
+## Running ffprobe
+
 The ffmpeg image includes `ffprobe`, which can be run as:
+
+```sh
+docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
 ```
-$ docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"
-```
 
-[![](https://images.microbadger.com/badges/image/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "image metadata") [![](https://images.microbadger.com/badges/version/sitkevij/ffmpeg.svg)](https://microbadger.com/images/sitkevij/ffmpeg "app version")
-
-[![build](https://travis-ci.org/sitkevij/ffmpeg.svg?branch=master)](https://travis-ci.org/sitkevij/ffmpeg) [![pulls](https://img.shields.io/docker/pulls/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/) [![stars](https://img.shields.io/docker/stars/sitkevij/ffmpeg.svg?style=plastic)](https://hub.docker.com/r/sitkevij/ffmpeg/)
-
-# About FFmpeg
+## About FFmpeg
 
 - FFmpeg http://ffmpeg.org
 
-# FFmpeg version changelog
+## FFmpeg version changelog
 
 Not sure what's in a release? Review the FFmpeg [changelog](https://raw.githubusercontent.com/FFmpeg/FFmpeg/master/Changelog)
 
-# About libs
+## About libs
 
 - libass https://github.com/libass/libass
 - libmp3lame http://lame.sourceforge.net
@@ -51,9 +55,9 @@ Not sure what's in a release? Review the FFmpeg [changelog](https://raw.githubus
 - x264 https://www.videolan.org/developers/x264.html H.264/AVC encoder
 - x265 https://bitbucket.org/multicoreware/x265/wiki/Home x265 HEVC Encoder
 
-# ffmpeg-2.8
+## ffmpeg-2.8
 
-```
+```sh
 docker run sitkevij/ffmpeg -buildconf
 ffmpeg version 2.8.11-0ubuntu0.16.04.1 Copyright (c) 2000-2017 the FFmpeg developers
   built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 20160609
@@ -129,9 +133,9 @@ ffmpeg version 2.8.11-0ubuntu0.16.04.1 Copyright (c) 2000-2017 the FFmpeg develo
     --enable-libopencv
 ```
 
-# ffmpeg 3.3-vmaf
+## ffmpeg 3.3-vmaf
 
-```
+```sh
 docker run sitkevij/ffmpeg:3.3-vmaf -buildconf
 ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
   built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 20160609
@@ -168,8 +172,7 @@ ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
     --enable-version3
 ```
 
-# Other useful tools
+## Other useful tools
 
 - [hex - hexdumnp utility](https://github.com/sitkevij/hex)
-- [mpi - MPEG media inspector](https://github.com/sitkevij/mpi)
-
+- [mpn - MPEG media inspector](https://github.com/sitkevij/mpn)
