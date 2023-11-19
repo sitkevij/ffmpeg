@@ -12,7 +12,7 @@ docker run --rm sitkevij/ffmpeg:6.0-alpine-3.18
 docker run -v $(pwd):$(pwd) -w $(pwd) --rm sitkevij/ffmpeg:6.1-alpine-3.18 -y -c:v libsvtav1 -y -filter_complex "smptehdbars=s=1280x720:rate=30:d=4,scale='-1:min(ih,1080)',pad=1920:1080:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p[v]" -map '[v]' smptehdbars_1280x720_4s_30fps_yuv420p.mp4
 ```
 
-## Using ffprob
+## Using ffprobe
 
 ```sh
 docker run --entrypoint "ffprobe" --rm sitkevij/ffmpeg:6.1-alpine-3.18 "https://github.com/sitkevij/test-media/blob/master/media/tos-6705k-h264-yuv420p-1920x800-24fps-mp3-44100s.mov?raw=true"

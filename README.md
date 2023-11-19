@@ -11,8 +11,8 @@
 
 ### 1. Pull from Docker Hub
 
-- [ffmpeg 3.3-alpine/latest](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-alpine)
-  - `docker pull sitkevij/ffmpeg` OR `docker pull sitkevij/ffmpeg:3.3-alpine`
+- [ffmpeg-6/ffmpeg-6.1-alpine-3.18](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-6/ffmpeg-6.1-alpine-3.18)
+  - `docker pull sitkevij/ffmpeg` OR `docker pull sitkevij/ffmpeg:6.1-alpine-3.18`
 - [ffmpeg 2.8-ubuntu](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-2.8-ubuntu) - default image with nearly all build options enabled, pull command:
   - `docker pull sitkevij/ffmpeg:2.8-ubuntu`
 - [ffmpeg 3.3-ubuntu-vmaf](https://github.com/sitkevij/ffmpeg/tree/master/ffmpeg-3.3-ubuntu-vmaf) - ffmpeg 3.3.x with [Netflix VMAF](https://github.com/Netflix/vmaf) compiled and linked, pull command:
@@ -55,10 +55,52 @@ Not sure what's in a release? Review the FFmpeg [changelog](https://raw.githubus
 - x264 https://www.videolan.org/developers/x264.html H.264/AVC encoder
 - x265 https://bitbucket.org/multicoreware/x265/wiki/Home x265 HEVC Encoder
 
+## ffmpeg-6.1
+
+```sh
+$ docker run -v $(pwd):$(pwd) -w $(pwd) --rm sitkevij/ffmpeg:6.1-alpine318 -buildconf
+ffmpeg version 6.1 Copyright (c) 2000-2023 the FFmpeg developers
+  built with gcc 12.2.1 (Alpine 12.2.1_git20220924-r10) 20220924
+  configuration: --bindir=/usr/bin --disable-debug --disable-doc --disable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libsvtav1 --enable-libass --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-librtmp --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-nonfree --enable-postproc --enable-small --enable-version3
+
+  libavutil      58. 29.100 / 58. 29.100
+  libavcodec     60. 31.102 / 60. 31.102
+  libavformat    60. 16.100 / 60. 16.100
+  libavdevice    60.  3.100 / 60.  3.100
+  libavfilter     9. 12.100 /  9. 12.100
+  libswscale      7.  5.100 /  7.  5.100
+  libswresample   4. 12.100 /  4. 12.100
+  libpostproc    57.  3.100 / 57.  3.100
+  configuration:
+    --bindir=/usr/bin
+    --disable-debug
+    --disable-doc
+    --disable-ffplay
+    --enable-gnutls
+    --enable-gpl
+    --enable-libaom
+    --enable-libsvtav1
+    --enable-libass
+    --enable-libfreetype
+    --enable-libmp3lame
+    --enable-libopus
+    --enable-librtmp
+    --enable-libtheora
+    --enable-libvorbis
+    --enable-libvpx
+    --enable-libwebp
+    --enable-libx264
+    --enable-libx265
+    --enable-nonfree
+    --enable-postproc
+    --enable-small
+    --enable-version3
+```
+
 ## ffmpeg-2.8
 
 ```sh
-docker run sitkevij/ffmpeg -buildconf
+$ docker run sitkevij/ffmpeg -buildconf
 ffmpeg version 2.8.11-0ubuntu0.16.04.1 Copyright (c) 2000-2017 the FFmpeg developers
   built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 20160609
   configuration: --prefix=/usr --extra-version=0ubuntu0.16.04.1 --build-suffix=-ffmpeg --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --cc=cc --cxx=g++ --enable-gpl --enable-shared --disable-stripping --disable-decoder=libopenjpeg --disable-decoder=libschroedinger --enable-avresample --enable-avisynth --enable-gnutls --enable-ladspa --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libmodplug --enable-libmp3lame --enable-libopenjpeg --enable-libopus --enable-libpulse --enable-librtmp --enable-libschroedinger --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxvid --enable-libzvbi --enable-openal --enable-opengl --enable-x11grab --enable-libdc1394 --enable-libiec61883 --enable-libzmq --enable-frei0r --enable-libx264 --enable-libopencv
@@ -136,7 +178,7 @@ ffmpeg version 2.8.11-0ubuntu0.16.04.1 Copyright (c) 2000-2017 the FFmpeg develo
 ## ffmpeg 3.3-vmaf
 
 ```sh
-docker run sitkevij/ffmpeg:3.3-vmaf -buildconf
+$ docker run sitkevij/ffmpeg:3.3-vmaf -buildconf
 ffmpeg version N-87201-g837c55e Copyright (c) 2000-2017 the FFmpeg developers
   built with gcc 5.4.0 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 20160609
   configuration: --prefix=/usr/local --extra-cflags=-I/usr/local/include --pkg-config-flags=--static --extra-ldflags=-L/usr/local/lib --bindir=/usr/local/bin --disable-debug --disable-doc --disable-ffplay --enable-avresample --enable-gpl --enable-libfdk_aac --enable-libvmaf --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-postproc --enable-small --enable-version3
